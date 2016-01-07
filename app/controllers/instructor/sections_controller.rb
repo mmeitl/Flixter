@@ -18,14 +18,14 @@ class Instructor::SectionsController < ApplicationController
     if current_course.user != current_user
       render :text => "Unauthorized", :status => :unauthorized
     end
-  end  
+  end
 
   helper_method :current_course
   def current_course
-    @current_course ||= Course.find(params[:id])
+    @current_course ||= Course.find(params[:course_id])
   end
 
   def section_params
     params.require(:section).permit(:title)
-  end  
+  end
 end
